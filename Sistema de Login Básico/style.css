@@ -14,17 +14,12 @@ body{
     align-items: center;
     border-radius: 15px;
 }
-.register{
+.crud{
     text-align: center;
     width: 45vw;
     border-radius: 15px;
 }
     
-.login{
-    text-align: center;
-    width: 45vw;
-    border-radius: 15px;
-}
 #adiciona{
     width: 100px;
     background-color: whitesmoke;
@@ -38,5 +33,10 @@ body{
 input{
     width: 200px;
     height: 15px;
+    border-radius: 15px;
+}
+#delete{
+    width: 100px;
+    background-color: whitesmoke;
     border-radius: 15px;
 }
