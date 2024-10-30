@@ -1,0 +1,11 @@
+input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body{
+    background-image: url(istockphoto-1401245535-612x612.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
