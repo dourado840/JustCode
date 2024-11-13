@@ -1,40 +1,57 @@
-let biblioteca = [];
-let inputTitulo = document.getElementById("cadTitulo");
-let inputAutor = document.getElementById("cadAutor");
-let inputGenero = document.getElementById("cadGen");
-let inputEditora = document.getElementById("cadEditora");
-let inputIsbn = document.getElementById("cadIsbn");
-let acervo = document.getElementById("acervo");
+const campoLogin = document.getElementById("login")
+const campoSenha = document.getElementById("password")
+const campoNovoLogin = document.getElementById("novoLogin")
+const campoNovaSenha = document.getElementById("novaSenha")
+const campoRepSenha = document.getElementById("repSenha")
 
-function add(){
-    let livro = {
-        titulo:inputTitulo.value,
-        autor:inputAutor.value,
-        genero:inputGenero.value,
-        editora:inputEditora.value,
-        isbn:inputIsbn.value
-        
-    }
-    biblioteca.push(livro);
-    inputTitulo.value = null;
-    inputAutor.value = null;
-    inputGenero.value = null;
-    inputEditora.value = null;
-    inputIsbn.value = null;
-    listagem();
+function login(){
+    let login = campoLogin.value;
+    let senha = campoSenha.value;
+    let mensagem = "Usuário ou senha incorreta"
+    let bancoDeDados = JSON.parse(localStorage.getItem("bancoDeDados"));
+if (bancoDeDados == null) {
+    mensagem = "Nenhum usuário cadastrado até o momento";
+} else {
+    for (let usuario of bancoDeDados) {
+        if (usuario.login == login && usuario.senha == senha) {
+            mensagem = "Parabéns, você logou!";
+            localStorage.setItem("logado", JSON.stringify(usuario));
+            window.location.href = "home.html";
+            break;
+        }
+    }    
 }
-
-function listagem(){
-    let livros = "";
-    for(let livro of biblioteca){
-        livros += "Título: " +livro.titulo +"<br>";
-        livros += "Autor: "  +livro.autor +"<br>";
-        livros += "Gênero: " +livro.genero +"<br>";
-        livros += "Editora: "+livro.editora +"<br>";
-        livors += "ISBN: " +livro.isbn + "<br>";
-        livros += "___________________<br>";
-    }
-    acervo.innerHTML = livros
+    alert(mensagem)
+    campoLogin.value = null
+    campoSenha.value = null
 }
-
+function cadastra(){
+    if (campoNovaSenha.value == campoRepSenha.value) {
+        const usuario = {
+            login: campoNovoLogin.value,
+            senha: campoNovaSenha.value
+        };
+        let bancoDeDados = JSON.parse(localStorage.getItem("bancoDeDados"));
+        if (bancoDeDados == null){
+            bancoDeDados = [];
+        }
+        bancoDeDados.push(usuario);
+        localStorage.setItem("bancoDeDados", JSON.stringify(bancoDeDados));
+        alert("Usuário cadastrado com sucesso")
+        campoNovoLogin.value = null
+        campoNovaSenha.value = null
+        campoRepSenha.value = null
+    } else {
+        alert("As senhas são diferentes!");
+    }
+}
+function deslogar(){
+    localStorage.setItem("logado", JSON.stringify(null));
+    window.location.href = "index.html";
+}
+function carrega(){
+    let usuarioLogado = JSON.parse(localStorage.getItem("logado"));
+    let nome = usuarioLogado.login;
+    document.getElementById("nome").innerHTML = nome;
+}
 
