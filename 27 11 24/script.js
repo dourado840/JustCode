@@ -3,20 +3,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const form = document.getElementById('cadastroForm');
     form.addEventListener('submit', function(event) {
         event.preventDefault();
-        const nome = document.getElementById('nome').value;
-        const email = document.getElementById('email').value;
-        const senha = document.getElementById('senha').value;
-        let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+        const pais = document.getElementById('pais').value;
+        const estado = document.getElementById('estado').value;
+        const cidade = document.getElementById('cidade').value;
+        const bairro = document.getElementById('bairro').value;
+        let enderecos = JSON.parse(localStorage.getItem('enderecos')) || [];
 // Gerar um ID único para o novo usuário
 // Se houver usuários cadastrados, define o ID como o próximo na sequência. Caso contrário, define o ID como 1.
-let id = usuarios.length ? usuarios[usuarios.length - 1].id + 1 : 1;
+let id = enderecos.length ? enderecos[enderecos.length - 1].id + 1 : 1;
 // Verifica se o ID já está em uso. Se estiver, incrementa o ID até encontrar um valor único.
-while (usuarios.some(usuario => usuario.id === id)) {
+while (enderecos.some(usuario => usuario.id === id)) {
     		id++;
 }
-        const usuario = { id, nome, email, senha };
-        usuarios.push(usuario);
-        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+        const endereco = { id, pais, estado, cidade, bairro };
+        enderecos.push(endereco);
+        localStorage.setItem('enderecos', JSON.stringify(enderecos));
         modal.style.display = "block";
         form.reset();
     });
