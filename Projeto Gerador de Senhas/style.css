@@ -1,0 +1,115 @@
+*{
+    font-family: sans-serif;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+body{
+    background-color: #18181b;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logo{
+    max-width: 600px;
+    /* LARGURA MÁXIMA */
+    margin-bottom: 24px;
+    /* MARGEM EM BAIXO */
+}
+
+.container-input{
+    max-width: 480px;
+    margin: 14px 0;
+}
+
+.container-input span{
+    color: antiquewhite;
+    font-size: 22px;
+}
+
+.slider{
+    -webkit-appearance: none;
+    /* TIRA A APARÊNCIA DO INPUT DE PREENCHIDO */
+    width: 100%;
+    border-radius: 25px;
+    background: #DFDFDF;
+    height: 18px;
+    outline: none;
+    margin-top: 8px;
+}
+
+.button-cta{
+    height: 40px;
+    background-color: #3EB72B;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 25px;
+    color: #DFDFDF;
+    font-weight: bold;
+    /* DEIXA EM NEGRITO */
+    font-size: 18px;
+}
+
+.container-password{
+    max-width: 480px;
+    margin: 14px 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.title{
+    text-align: center;
+    color: #DFDFDF;
+    font-size: 28px;
+    margin-top: 18px;
+    margin-bottom: 8px;
+}
+
+.password{
+    height: 60px;
+    background-color: rgba(0,0,0, 0.40);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #DFDFDF;
+    border: 1px solid #313131;
+    transition: transform 0.5s;
+    /* SERVE PARA MANIPULAR O MOVIMENTO DO HOVER PARA SUAVIZAR EM 0.5s */
+}
+
+.password:hover{
+transform: scale(1.05);
+/* AO PASSAR O MOUSE EM CIMA O TRANSFORM IRÁ AUMENTAR O OBJETO */
+}
+
+.tooltip{
+    color: #DFDFDF;
+    position: relative;
+    top: 20px;
+    padding: 6px 8px;
+    background: rgb(15,15,15);
+    text-align: center;
+    font-size: 16px;
+    border-radius: 6px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.hide{
+    display: none;
+}
+
+.container-password:hover .tooltip{
+    visibility: visible;
+    bottom: 50px;
+    opacity: 1;
+}
